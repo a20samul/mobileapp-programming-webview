@@ -6,9 +6,11 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.webkit.JavascriptInterface;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -23,10 +25,14 @@ public class MainActivity extends AppCompatActivity {
 
     public void showExternalWebPage(){
         // TODO: Add your code for showing external web page here
+
+        myWebView.loadUrl("https://www.his.se/forskning/");
     }
 
     public void showInternalWebPage(){
         // TODO: Add your code for showing internal web page here
+
+        myWebView.loadUrl("file:///android_asset/about.html");
     }
 
     @Override
@@ -36,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        WebView myWebView = (WebView) findViewById(R.id.my_webview);
+        myWebView = (WebView) findViewById(R.id.my_webview);
 
         WebViewClient myWebViewClient = new WebViewClient();
         myWebView.setWebViewClient(myWebViewClient);
@@ -44,7 +50,10 @@ public class MainActivity extends AppCompatActivity {
         WebSettings webSettings = myWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
 
+        Log.d("==>","Successful start of application");
         myWebView.loadUrl("https://his.se");
+
+        Log.d("==>","Will display local webpage");
 
         /*
         * Rename your App. Tip: Values->Strings
@@ -75,8 +84,9 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Your Mail", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+                Log.d("==>","You have clicked on the button");
             }
         });
     }
@@ -97,15 +107,37 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_external_web) {
+            showExternalWebPage();
             Log.d("==>","Will display external web page");
             return true;
         }
 
         if (id == R.id.action_internal_web) {
+            showInternalWebPage();
             Log.d("==>","Will display internal web page");
             return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+    public class WebAppInterface {
+        private Context mContext;
+        WebAppInterface(Context context) {
+            mContext = context;
+        }
+
+        @JavascriptInterface
+        public void showToast(String toast) {
+            // In this method you can do anything you want
+            Toast.makeText(mContext, toast, Toast.LENGTH_SHORT).show();
+        }
+
+        //@JavascriptInterface
+        //  public void showToast(String msg) {
+          //  Snackbar.make(findViewById(R.id.my_webview), msg, Snackbar.LENGTH_LONG)
+            //        .setAction("Action"), null.show();
+       // }
     }
 }
