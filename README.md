@@ -5,7 +5,7 @@ En applikation skapades med webview element för att kunna inkorporera hemsidor 
 **1.  Update app name**
 Uppdaterade applikationens namn genom values --> strings.xml under string name, till MyWebViewApp
 från WebViewApp. Denna förändring uppvisades i toppbaren där applikationsnamnet visades.
-(Se bild i steg 6, 7, och 8).
+(Se bild 1, 2 och 3).
 ```
 <resources>
     <string name="app_name">MyWebViewApp</string>
