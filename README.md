@@ -30,7 +30,7 @@ applikationen.
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         />
- ```
+```
 
 **4. Gave Webview an ID**
 Inom res --> layout --> content_main.xml ändrades id från webview till my_webview
@@ -53,12 +53,12 @@ Ett ID tillades för att kunna referera till elementet i nästa steg vid uppvisn
 
         WebViewClient myWebViewClient = new WebViewClient();
         myWebView.setWebViewClient(myWebViewClient);
-
-    ```
+```
 
 **6. Enabled Javascript and added url.**
 Javascript tillgängligjordes med nedanstående kod.
 Därefter specificerades vilken url som skulle öppnas upp lokalt i applikationen.
+
 ```
         WebSettings webSettings = myWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
@@ -72,6 +72,7 @@ Bild 1: Demonstrerar den lokala webbsidan.
 
 **7. External Webpage**
 En External webpage tillades genom nedanstående kod
+
 ```
     public void showExternalWebPage(){
         // TODO: Add your code for showing external web page here
@@ -79,7 +80,9 @@ En External webpage tillades genom nedanstående kod
         myWebView.loadUrl("https://www.his.se/forskning/");
     }
 ```
+
 Som därefter kallades på genom:
+
 ```
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_external_web) {
