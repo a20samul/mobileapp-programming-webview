@@ -2,7 +2,7 @@
 # Rapport WebView
 En applikation skapades med webview element för att kunna inkorporera hemsidor inuti applikationen.
 
-1.  Update app name
+**1.  Update app name**
 Uppdaterade applikationens namn genom values --> strings.xml under string name, till MyWebViewApp
 från WebViewApp. Denna förändring uppvisades i toppbaren där applikationsnamnet visades.
 (Se bild i steg 6, 7, och 8).
@@ -13,14 +13,14 @@ från WebViewApp. Denna förändring uppvisades i toppbaren där applikationsnam
 </resources>
 ```
 
-2. Enabled internet access for the app
+**2. Enabled internet access for the app**
 Under manifests --> AndroidManifest.xml tillades nedanstående kod för att tillgängliggöra
 och erbjuda internet tillgång.
 ```
 <uses-permission android:name="android.permission.INTERNET" />
 ```
 
-3. Create WebView element
+**3. Create WebView element**
 Inom res --> layout --> content_main.xml tillades nedantående kod för att skapa en webview till
 applikationen.
 
@@ -32,7 +32,7 @@ applikationen.
         />
  ```
 
-4. Gave Webview an ID
+**4. Gave Webview an ID**
 Inom res --> layout --> content_main.xml ändrades id från webview till my_webview
 ```
   <WebView
@@ -40,7 +40,7 @@ Inom res --> layout --> content_main.xml ändrades id från webview till my_webv
         ...
 ```
 
-5. Created and located private variable, created WebViewClient.
+**5. Created and located private variable, created WebViewClient.**
 Under MainActivity tillades koden tillsammans med dess importerade klasser.
 setWebViewClient tillades för att öppna hemsidan samt dess länkar inuti applikationen.
 Ett ID tillades för att kunna referera till elementet i nästa steg vid uppvisning av web page.
@@ -56,8 +56,7 @@ Ett ID tillades för att kunna referera till elementet i nästa steg vid uppvisn
 
     ```
 
-
-6. Enabled Javascript and added url.
+**6. Enabled Javascript and added url.**
 Javascript tillgängligjordes med nedanstående kod.
 Därefter specificerades vilken url som skulle öppnas upp lokalt i applikationen.
 ```
@@ -66,11 +65,12 @@ Därefter specificerades vilken url som skulle öppnas upp lokalt i applikatione
 
         myWebView.loadUrl("https://his.se");
 ```
-file:///android_asset/img/local.png
+
+![](local.png)
 Bild 1: Demonstrerar den lokala webbsidan.
 
 
-7. External Webpage
+**7. External Webpage**
 En External webpage tillades genom nedanstående kod
 ```
     public void showExternalWebPage(){
@@ -88,10 +88,11 @@ Som därefter kallades på genom:
             return true;
         }
 ```
-file:///android_asset/img/external.png
+
+![](external.png)
 Bild 2: Uppvisar den externa webbsidan.
 
-8. Internal Webpage
+**8. Internal Webpage**
 En Internal webpage tillades genom nedanstående kod. En egen konstruerad html sida skapades vilken
 skickade information  mellan applikation och webbsida. Den konstruerades på grund av säkerhetsskäl
 samt för att öka kontrollen. Sidan tillades genom att skapa en lokal asset mapp vilken html filen
@@ -114,7 +115,7 @@ och som kallades på i:
         }
 ```
 
-file:///android_asset/img/internal.png
+![](internal.png)
 Bild 3: Uppvisar den interna webbsidan.
 
 
